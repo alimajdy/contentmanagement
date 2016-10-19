@@ -34,11 +34,20 @@
     <div class="form-group">
         {!! Form::label('is_active', 'Status') !!}
         {!! Form::select('is_active',[1 => 'Active', 0 => 'Not Active'], 0, ['class' => 'form-control']) !!}
+
+
+        @if ($errors->has('is_active'))
+            <strong>{{ $errors->first('is_active') }}</strong>
+        @endif
     </div>
 
     <div class="form-group">
         {!! Form::label('photo_id', 'choose file') !!}
         {!! Form::file('photo_id', null, ['class' => 'form-control']) !!}
+
+        @if ($errors->has('photo_id'))
+            <strong>{{ $errors->first('photo_id') }}</strong>
+        @endif
     </div>
 
     <div class="form-group">
