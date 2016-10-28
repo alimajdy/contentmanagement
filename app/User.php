@@ -38,4 +38,24 @@ class User extends Authenticatable
 
     }
 
+    // mutator
+    public function setPasswordAttribute($password){
+
+        if(!empty($password)) {
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }
+
+    public function isAdmin(){
+        if($this->role->name == "adminstrator" && $this->is_active == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
+
 }

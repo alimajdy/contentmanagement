@@ -2,9 +2,10 @@
 
 @section('content')
     <h1> Edit Users</h1>
-        <div class="col-sm-3">
-            <img  class="img-responsive  img-rounded" src="{{$user->photo?$user->photo->file:"http://placehold.it/480x480"}}" alt="">
-        </div>
+    <div class="col-sm-3">
+        <img class="img-responsive  img-rounded" src="{{$user->photo?$user->photo->file:"http://placehold.it/480x480"}}"
+             alt="">
+    </div>
 
 
     <div class="col-sm-9">
@@ -64,10 +65,23 @@
             @endif
         </div>
 
-        <div class="form-group">
+        <div class="form-group  col-sm-4">
             {!! Form::submit('Update User' ,['class' => 'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
+
+        <div class="col-sm-4"></div>
+
+        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy',$user->id],'class'=>'col-sm-4']) !!}
+
+        <div class="form-group">
+            {!! Form::submit('Delete User',['class' => 'btn btn-danger']) !!}
+
+        </div>
+
+
+        {!! Form::close() !!}
+
 
         @if(count($errors)>0)
             <div class="alert alert-danger">
