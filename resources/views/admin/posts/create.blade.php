@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         {!! Form::label('category_id', 'Category') !!}
-        {!! Form::select('category_id', array('1' => 'options'), null, ['class' => 'form-control']) !!}
+        {!! Form::select('category_id', ['' => 'Choose option']+$category, null, ['class' => 'form-control']) !!}
 
         @if($errors->has('category_id'))
             <strong>{{ $errors->first('category_id') }}</strong>
